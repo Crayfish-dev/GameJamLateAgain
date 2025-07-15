@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://f0il85kn6fnt"]
+
+[ext_resource type="Texture2D" uid="uid://du13uhoqjpwim" path="res://assets/obstacles/dog_poop.png" id="1_pj0nt"]
+[ext_resource type="PackedScene" uid="uid://fcgrfe7mnel0" path="res://scenes/damage_box.tscn" id="2_m0nyx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jd3nk"]
+atlas = ExtResource("1_pj0nt")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgtjm"]
+atlas = ExtResource("1_pj0nt")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ln2la"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jd3nk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgtjm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e6nmp"]
+size = Vector2(6, 2)
+
+[node name="DogPoop" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_ln2la")
+autoplay = "default"
+frame_progress = 0.606041
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_e6nmp")
+
+[node name="DamageBox" parent="." instance=ExtResource("2_m0nyx")]
+visible = false
+position = Vector2(0, 2)
+scale = Vector2(0.5, 0.5)
+damage = 3

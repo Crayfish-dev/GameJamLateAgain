@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8ov8sxaqlxjp"]
+
+[ext_resource type="Script" uid="uid://cnlsiukxfgloi" path="res://scripts/trash_bag.gd" id="1_eoi41"]
+[ext_resource type="Texture2D" uid="uid://bx40yfry8uvl4" path="res://assets/particles_and_easter_eggs/trash_bag_particle.png" id="2_pvps0"]
+[ext_resource type="Texture2D" uid="uid://dwtu5ae8qyjuu" path="res://assets/obstacles/trash_bag.png" id="2_uhlpk"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_q5hy7"]
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 720.0
+angular_velocity_min = -357.21
+angular_velocity_max = 401.86
+orbit_velocity_min = -0.248
+orbit_velocity_max = 0.248
+radial_velocity_min = -248.06
+radial_velocity_max = 139.54
+gravity = Vector3(0, 120, 0)
+linear_accel_min = -69.77
+linear_accel_max = 31.78
+scale_min = 0.5
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pvps0"]
+radius = 4.98883
+height = 15.6186
+
+[node name="TrashBag" type="Area2D"]
+script = ExtResource("1_eoi41")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(-1, -7)
+emitting = false
+amount = 10
+sub_emitter = NodePath(".")
+texture = ExtResource("2_pvps0")
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_q5hy7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -14)
+texture = ExtResource("2_uhlpk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+rotation = 0.860447
+shape = SubResource("CapsuleShape2D_pvps0")
+debug_color = Color(0.995506, 0, 0.204036, 0.42)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
