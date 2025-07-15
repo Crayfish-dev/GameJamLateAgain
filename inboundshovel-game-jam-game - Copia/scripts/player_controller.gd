@@ -15,6 +15,7 @@ class_name PlayerController
 @onready var sprite: AnimatedSprite2D = $PlayerVisuals/AnimatedSprite2D
 var stunned = false
 
+var time = 0
 var damaged = false
 var jump_multiplier = -30.0
 var direction = 0.0
@@ -23,6 +24,8 @@ var health = 3
 var is_sliding = false
 
 func _physics_process(delta: float) -> void:
+	time += 1
+	
 	if can_move == false:
 		velocity.x = 0
 		velocity.y = 0
@@ -137,3 +140,7 @@ func jump():
 		velocity.y = jump_power * jump_multiplier
 		is_sliding = false
 	velocity.y = jump_power * jump_multiplier
+
+func fired():
+	can_move = false
+	

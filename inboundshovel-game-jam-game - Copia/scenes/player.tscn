@@ -309,6 +309,8 @@ disabled = true
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 
+[node name="TimeManager" type="Node2D" parent="."]
+
 [connection signal="timeout" from="SlideTimer" to="." method="_on_slide_timer_timeout"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
 [connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]

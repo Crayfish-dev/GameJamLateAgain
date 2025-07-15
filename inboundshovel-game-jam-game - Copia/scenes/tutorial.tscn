@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://craqx1884h71s"]
+
+[ext_resource type="Texture2D" uid="uid://bp6or4vgwei3o" path="res://assets/UI/head.png" id="1_8ho6b"]
+[ext_resource type="Texture2D" uid="uid://bc1vu84yct10c" path="res://assets/UI/cloud.png" id="2_ph3nu"]
+
+[node name="Tutorial" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+
+[node name="Head" type="Sprite2D" parent="."]
+position = Vector2(-5, 5)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_8ho6b")
+
+[node name="Cloud2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.415686)
+position = Vector2(-6, -20)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_ph3nu")
+
+[node name="Cloud" type="Sprite2D" parent="."]
+position = Vector2(-5, -19)
+texture = ExtResource("2_ph3nu")
